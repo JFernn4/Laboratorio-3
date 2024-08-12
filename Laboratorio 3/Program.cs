@@ -4,6 +4,7 @@ int opcion;
 bool menu = true;
 List<Cliente> listaClientes = new List<Cliente>();
 List<Vehiculo> listaVehiculos= new List<Vehiculo>();
+List <Pedido> listaPedidos= new List<Pedido>();
 while (menu)
 {
     MostrarMenu();
@@ -85,6 +86,7 @@ while (menu)
             }
         case 3:
             {
+                Pedido.RegistrarPedido(listaPedidos);
                 break;
             }
         case 4:

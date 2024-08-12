@@ -8,7 +8,13 @@ namespace Laboratorio_3
 {
     internal class Producto
     {
-        public string Nombre { get; set; }  
+        public string NombreProducto { get; set; }  
         public double Precio { get; set; }
+
+        public Producto(string nombreProducto, double precio)
+        {
+            NombreProducto = nombreProducto;
+            Precio = precio;
+        }
     }
 }
