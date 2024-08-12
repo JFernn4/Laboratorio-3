@@ -96,6 +96,7 @@ while (menu)
             }
         case 5:
             {
+                Vehiculo.MostrarDetalles(listaVehiculos);
                 break;
             }
         case 6:

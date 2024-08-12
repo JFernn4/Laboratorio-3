@@ -18,5 +18,23 @@ namespace Laboratorio_3
             Modelo = modelo;
             Combustible = combustible;
         }
+        public static void MostrarDetalles(List<Vehiculo> listaVehiculos)
+        {
+            Console.Clear();
+            foreach (Vehiculo vehiculo in listaVehiculos)
+            {
+                if (vehiculo is  VehiculoPersonal vehiculoPersonal)
+                {
+                    Console.WriteLine("VEHÍCULO PERSONAL");
+                    Console.WriteLine($"Matrícula: {vehiculoPersonal.Matricula}. Modelo: {vehiculoPersonal.Modelo}. Combustible: {vehiculoPersonal.Combustible}.");
+                }
+                else if (vehiculo is VehiculoCorporativo vehiculoCorporativo)
+                {
+                    Console.WriteLine("VEHÍCULO CORPORATIVO");
+                    Console.WriteLine($"Matrícula: {vehiculoCorporativo.Matricula}. Modelo: {vehiculoCorporativo.Modelo}. Combustible: {vehiculoCorporativo.Combustible}.");
+                }
+            }
+            Console.ReadKey();
+        }
     }
 }
