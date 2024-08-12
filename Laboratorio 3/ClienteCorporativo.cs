@@ -8,5 +8,8 @@ namespace Laboratorio_3
 {
     internal class ClienteCorporativo : Cliente
     {
+        public ClienteCorporativo(string nombre, string correo, string direccion) : base(nombre, correo, direccion)
+        {
+        }
     }
 }
