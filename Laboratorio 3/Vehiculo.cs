@@ -8,5 +8,8 @@ namespace Laboratorio_3
 {
     internal class Vehiculo
     {
+        public string  Matricula { get; set; }
+        public string Modelo { get; set; }
+        public string Combustible { get; set; }
     }
 }

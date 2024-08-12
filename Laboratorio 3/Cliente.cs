@@ -8,5 +8,8 @@ namespace Laboratorio_3
 {
     internal class Cliente
     {
+        public string Nombre { get; set; }
+        public string Correo { get; set; } 
+        public string Direccion {  get; set; }
     }
 }

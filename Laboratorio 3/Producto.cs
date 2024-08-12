@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Laboratorio_3
 {
-    internal class Pedido
+    internal class Producto
     {
-        public int Numero {  get; set; }
-        public string Fecha { get; set; } 
-
+        public string Nombre { get; set; }  
+        public double Precio { get; set; }
     }
 }
