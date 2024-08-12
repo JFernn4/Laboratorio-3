@@ -10,6 +10,5 @@ namespace Laboratorio_3
     {
         public int Numero {  get; set; }
         public string Fecha { get; set; } 
-
     }
 }
