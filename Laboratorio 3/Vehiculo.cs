@@ -11,5 +11,12 @@ namespace Laboratorio_3
         public string Matricula { get; set; }
         public string Modelo { get; set; }
         public string Combustible { get; set; }
+
+        public Vehiculo(string matricula, string modelo, string combustible)
+        {
+            Matricula = matricula;
+            Modelo = modelo;
+            Combustible = combustible;
+        }
     }
 }
