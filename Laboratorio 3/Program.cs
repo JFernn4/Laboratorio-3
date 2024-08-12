@@ -43,7 +43,7 @@ while (menu)
                         case 4:
                             {
                                 Console.Clear();
-                                menu=false;
+                                menuClientes=false;
                                 break;
                             }
                     }
@@ -89,6 +89,7 @@ while (menu)
             }
         case 4:
             {
+                Cliente.MostrarDetalles(listaClientes);
                 break;
             }
         case 5:
