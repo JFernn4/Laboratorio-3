@@ -53,5 +53,26 @@ namespace Laboratorio_3
             }
             Console.ReadKey();
         }
+        public static void BuscarPedido(List<Pedido> listaPedidos)
+        {
+            Console.Clear();
+            Console.WriteLine("Ingrese el número del pedido que desea buscar.");
+            int buscarPedido= Convert.ToInt32(Console.ReadLine());
+            Pedido buscar= listaPedidos.Find(p=>p.Numero == buscarPedido);
+            if ( buscar == null )
+            {
+                Console.WriteLine("No se ha encontrado el pedido.");
+            }
+            else
+            {
+                Console.WriteLine($"-Número de pedido:{buscar.Numero}. Fecha: {buscar.Fecha}.");
+                Console.WriteLine("Lista de productos:");
+                foreach (Producto producto in buscar.Productos)
+                {
+                    Console.WriteLine($"Nombre: {producto.NombreProducto}. Precio: Q. {producto.Precio}.");
+                }
+            }
+            Console.ReadKey();
+        }
     }
 }

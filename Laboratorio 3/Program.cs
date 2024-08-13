@@ -111,10 +111,12 @@ while (menu)
             }
         case 8:
             {
+                Vehiculo.BuscarVehiculos(listaVehiculos);
                 break;
             }
         case 9:
             {
+                Pedido.BuscarPedido(listaPedidos);
                 break;
             }
         case 0:

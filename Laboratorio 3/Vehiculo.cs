@@ -36,5 +36,30 @@ namespace Laboratorio_3
             }
             Console.ReadKey();
         }
+        public static void BuscarVehiculos(List<Vehiculo> listaVehiculos)
+        {
+            Console.Clear();
+            Console.WriteLine("Ingresa la mattrícula del vehículo que desea buscar.");
+            string vehiculoBuscar= Console.ReadLine();
+            Vehiculo buscar= listaVehiculos.Find(p=>p.Matricula==vehiculoBuscar);
+            if ( buscar == null )
+            {
+                Console.WriteLine("No se ha encontrado el vehículo.");
+            }
+            else
+            {
+                if (buscar is VehiculoPersonal vehiculoPersonal)
+                {
+                    Console.WriteLine("VEHÍCULO PERSONAL");
+                    Console.WriteLine($"Matrículo: {vehiculoPersonal.Matricula}. Modelo: {vehiculoPersonal.Modelo}. Combustible: {vehiculoPersonal.Combustible}.");
+                }
+                else if  (buscar is VehiculoCorporativo vehiculoCorporativo)
+                {
+                    Console.WriteLine("VEHÍCULO CORPORATIVO");
+                    Console.WriteLine($"Matrículo: {vehiculoCorporativo.Matricula}. Modelo: {vehiculoCorporativo.Modelo}. Combustible: {vehiculoCorporativo.Combustible}.");
+                }
+            }
+            Console.ReadKey();
+        }
     }
 }
