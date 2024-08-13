@@ -41,5 +41,35 @@ namespace Laboratorio_3
             }
             Console.ReadKey();
         }
+        public static void BuscarCliente(List<Cliente> listaClientes)
+        {
+            Console.Clear();
+            Console.WriteLine("Ingrese el nombre del cliente que busca.");
+            string nombreBuscar= Console.ReadLine();
+            Cliente buscar= listaClientes.Find(p=>p.Nombre==nombreBuscar);
+            if ( buscar == null )
+            {
+                Console.WriteLine("No se encontró al cliente.");
+            }
+            else
+            {
+                if (buscar is ClienteRegular clienteRegular)
+                {
+                    Console.WriteLine("CLIENTE REGULAR");
+                    Console.WriteLine($"Nombre:{clienteRegular.Nombre}. Correo:{clienteRegular.Correo}. Dirección: {clienteRegular.Direccion}.");
+                }
+                else if (buscar is ClienteVIP clienteVIP)
+                {
+                    Console.WriteLine("CLIENTE VIP");
+                    Console.WriteLine($"Nombre:{clienteVIP.Nombre}. Correo:{clienteVIP.Correo} . Dirección:  {clienteVIP.Direccion}.");
+                }
+                else if (buscar is ClienteCorporativo clientecorporativo)
+                {
+                    Console.WriteLine("CLIENTE CORPORATIVO");
+                    Console.WriteLine($"Nombre:{clientecorporativo.Nombre}. Correo:{clientecorporativo.Correo}  . Dirección:   {clientecorporativo.Direccion}.");
+                }
+            }
+            Console.ReadKey();
+        }
     }
 }

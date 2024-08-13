@@ -39,5 +39,19 @@ namespace Laboratorio_3
             }
             listaPedidos.Add(pedido);
         }
+        public static void MostrarDetalles(List<Pedido> listaPedidos)
+        {
+            Console.Clear();
+            foreach (Pedido pedido in listaPedidos)
+            {
+                Console.WriteLine($"-Número de pedido:{pedido.Numero}. Fecha: {pedido.Fecha}.");
+                Console.WriteLine("Lista de productos:");
+                foreach (Producto producto in pedido.Productos)
+                {
+                    Console.WriteLine($"Nombre: {producto.NombreProducto}. Precio: Q. {producto.Precio}.");
+                }
+            }
+            Console.ReadKey();
+        }
     }
 }

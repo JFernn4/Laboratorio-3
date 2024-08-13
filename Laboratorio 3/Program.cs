@@ -101,9 +101,19 @@ while (menu)
             }
         case 6:
             {
+                Pedido.MostrarDetalles(listaPedidos);
                 break;
             }
         case 7:
+            {
+                Cliente.BuscarCliente(listaClientes);
+                break;
+            }
+        case 8:
+            {
+                break;
+            }
+        case 9:
             {
                 break;
             }
