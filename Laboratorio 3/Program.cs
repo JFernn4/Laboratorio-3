@@ -86,7 +86,7 @@ while (menu)
             }
         case 3:
             {
-                Pedido.RegistrarPedido(listaPedidos);
+                Pedido.RegistrarPedido(listaPedidos, listaClientes);
                 break;
             }
         case 4:
@@ -116,7 +116,7 @@ while (menu)
             }
         case 9:
             {
-                Pedido.BuscarPedido(listaPedidos);
+                Pedido.BuscarPedido(listaPedidos, listaClientes);
                 break;
             }
         case 0:
