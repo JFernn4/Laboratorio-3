@@ -11,12 +11,41 @@ namespace Laboratorio_3
         public string Matricula { get; set; }
         public string Modelo { get; set; }
         public string Combustible { get; set; }
+        public Cliente Cliente { get; set; }
 
-        public Vehiculo(string matricula, string modelo, string combustible)
+        public Vehiculo(string matricula, string modelo, string combustible, Cliente cliente)
         {
             Matricula = matricula;
             Modelo = modelo;
             Combustible = combustible;
+            Cliente = cliente;
+        }
+        public static void Registrar(List<Vehiculo> listaVehiculos, List<Cliente> listaClientes)
+        {
+            Console.Clear();
+            Console.WriteLine("Ingrese el nombre del cliente.");
+            string clienteNombre=Console.ReadLine();
+            Cliente cliente = listaClientes.Find(p => p.Nombre == clienteNombre);
+            if (cliente == null)
+            {
+                Console.WriteLine("No se ha encontrado al cliente.");
+                Console.ReadKey();
+            }
+            else
+            {
+                if (cliente is ClienteVIP)
+                {
+                    VehiculoPersonal.RegistrarVehiculoPersonal(listaVehiculos, cliente);
+                }
+                else if (cliente is ClienteRegular)
+                {
+                    VehiculoPersonal.RegistrarVehiculoPersonal(listaVehiculos, cliente);
+                }
+                else if (cliente is ClienteCorporativo)
+                {
+                    VehiculoCorporativo.RegistrarVehiculoCorporativo(listaVehiculos, cliente);
+                }
+            }
         }
         public static void MostrarDetalles(List<Vehiculo> listaVehiculos)
         {

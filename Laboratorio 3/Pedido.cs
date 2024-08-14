@@ -32,7 +32,7 @@ namespace Laboratorio_3
             Console.WriteLine("Ingrese el nombre del cliente:");
             string nombreCliente = Console.ReadLine();
 
-            Cliente cliente = listaClientes.Find(c => c.Nombre == nombreCliente);
+            Cliente cliente = listaClientes.Find(p => p.Nombre == nombreCliente);
 
             if (cliente == null)
             {

@@ -53,35 +53,7 @@ while (menu)
             }
         case 2:
             {
-                bool menuVehiculos=true;
-                int opcionVehiculos;
-                while (menuVehiculos )
-                {
-                    Console.Clear();
-                    Console.WriteLine("¿Qué tipo de vehículo desea registrar?");
-                    Console.WriteLine("1. Vehículo Personal.");
-                    Console.WriteLine("2. Vehículo Corporativo.");
-                    Console.WriteLine("3. Salir.");
-                    opcionVehiculos= Convert.ToInt32(Console.ReadLine());
-                    switch (opcionVehiculos)
-                    {
-                        case 1:
-                            {
-                                VehiculoPersonal.RegistrarVehiculoPersonal(listaVehiculos);
-                                break;
-                            }
-                        case 2:
-                            {
-                                VehiculoCorporativo.RegistrarVehiculoCorporativo(listaVehiculos);
-                                break;
-                            }
-                        case 3:
-                            {
-                                menuVehiculos = false;
-                                break;
-                            }
-                    }
-                }
+                Vehiculo.Registrar();
                 break;
             }
         case 3:
