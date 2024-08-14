@@ -35,25 +35,75 @@ namespace Laboratorio_3
             }
             else
             {
-                Console.WriteLine("Ingrese el número de pedido:");
-                int numero = Convert.ToInt32(Console.ReadLine());
-
-                Console.WriteLine("Ingrese la fecha del pedido:");
-                string fecha = Console.ReadLine();
-                Pedido pedido = new Pedido(numero, fecha, cliente);
-                Console.WriteLine("¿Cuántos productos desea agregar a este pedido?");
-                int cantidadProductos = Convert.ToInt32(Console.ReadLine());
-                for (int i = 0; i < cantidadProductos; i++)
+                int numero = 0;
+                bool trycatch = true;
+                int cantidadProductos = 0;
+                string fecha = "vacío";
+                while (trycatch)
                 {
-                    Console.WriteLine($"Ingrese el nombre del producto {i + 1}");
-                    string nombreProducto = Console.ReadLine();
-                    Console.WriteLine($"Ingrese el precio del producto {i + 1}");
-                    double precio = Convert.ToDouble(Console.ReadLine());
-                    Producto producto = new Producto(nombreProducto, precio);
-                    pedido.Productos.Add(producto);
+                    try
+                    {
+                        if (numero == 0)
+                        {
+                            Console.WriteLine("Ingrese el número de pedido:");
+                            numero = Convert.ToInt32(Console.ReadLine());
+                        }
+                        Pedido pedidoExistente = listaPedidos.Find(p => p.Numero == numero);
+                        if (pedidoExistente == null)
+                        {
+                            if (fecha == "vacío")
+                            {
+                                Console.WriteLine("Ingrese la fecha del pedido:");
+                                fecha = Console.ReadLine();
+                            }
+                            Pedido pedido = new Pedido(numero, fecha, cliente);
+                            if (cantidadProductos == 0)
+                            {
+                                Console.WriteLine("¿Cuántos productos desea agregar a este pedido?");
+                                cantidadProductos = Convert.ToInt32(Console.ReadLine());
+                            }
+                            double precio = 0;
+                            for (int i = 0; i < cantidadProductos; i++)
+                            {
+                                bool precioValido = true;
+                                while (precioValido)
+                                {
+                                    try
+                                    {
+                                        Console.WriteLine($"Ingrese el precio del producto {i + 1}:");
+                                        precio = Convert.ToDouble(Console.ReadLine());
+                                        precioValido = false;
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.Clear(); Console.WriteLine($"Por favor, ingrese un valor numérico válido para el precio.") ;
+                                    }
+                                }
+
+                                Console.WriteLine($"Ingrese el nombre del producto {i + 1}:");
+                                string nombreProducto = Console.ReadLine();
+                                Producto producto = new Producto(nombreProducto, precio);
+                                pedido.Productos.Add(producto);
+                            }
+                            listaPedidos.Add(pedido);
+                            trycatch = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Ya existe un pedido con ese número.");
+                            Console.ReadKey();
+                        }
+                        trycatch=false;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"Asegúrese de aplicar bien el formato que se le pide. " +ex.Message);
+                        Console.ReadKey();
+                    }
                 }
-                listaPedidos.Add(pedido);
-            }
+        }
+
         }
         public static double CalcularTotal(Pedido pedido)
         {
@@ -99,37 +149,40 @@ namespace Laboratorio_3
         }
         public static void BuscarPedido(List<Pedido> listaPedidos, List<Cliente> listaClientes)
         {
-            Console.Clear();
-            Console.WriteLine("Ingrese el número del pedido que desea buscar.");
-            int buscarPedido= Convert.ToInt32(Console.ReadLine());
-            Pedido buscar= listaPedidos.Find(p=>p.Numero == buscarPedido);
-            if ( buscar == null )
+            try
             {
-                Console.WriteLine("No se ha encontrado el pedido.");
+                Console.Clear();
+                Console.WriteLine("Ingrese el número del pedido que desea buscar.");
+                int buscarPedido = Convert.ToInt32(Console.ReadLine());
+                Pedido buscar = listaPedidos.Find(p => p.Numero == buscarPedido);
+                if (buscar == null)
+                {
+                    Console.WriteLine("No se ha encontrado el pedido.");
+                }
+                else
+                {
+                    Console.WriteLine($"-Número de pedido:{buscar.Numero}. Fecha: {buscar.Fecha}. Cliente:{buscar.Cliente.Nombre}. Dirección: {buscar.Cliente.Direccion}.");
+                    Console.WriteLine("Lista de productos:");
+                    foreach (Producto producto in buscar.Productos)
+                    {
+                        Console.WriteLine($"Nombre: {producto.NombreProducto}. Precio: Q. {producto.Precio}.");
+                    }
+                    if (buscar.Cliente is ClienteRegular)
+                    {
+                        Console.WriteLine($"Total: Q.{CalcularTotal(buscar)}.");
+                    }
+                    else if (buscar.Cliente is ClienteVIP)
+                    {
+                        Console.WriteLine($"Total: Q.{CalcularTotal(buscar)} (10% de descuento aplicado).");
+                    }
+                    else if (buscar.Cliente is ClienteCorporativo)
+                    {
+                        Console.WriteLine($"Total: Q.{CalcularTotal(buscar)} (15% de descuento aplicado).");
+                    }
+                }
+                Console.ReadKey();
             }
-            else
-            {
-                Console.WriteLine($"-Número de pedido:{buscar.Numero}. Fecha: {buscar.Fecha}. Cliente:{buscar.Cliente.Nombre}. Dirección: {buscar.Cliente.Direccion}.");
-                Console.WriteLine("Lista de productos:");
-                foreach (Producto producto in buscar.Productos)
-                {
-                    Console.WriteLine($"Nombre: {producto.NombreProducto}. Precio: Q. {producto.Precio}.");
-                }
-                if (buscar.Cliente is ClienteRegular)
-                {
-                    Console.WriteLine($"Total: Q.{CalcularTotal(buscar)}.");
-                }
-                else if (buscar.Cliente is ClienteVIP)
-                {
-                    Console.WriteLine($"Total: Q.{CalcularTotal(buscar)} (10% de descuento aplicado).");
-                }
-                else if (buscar.Cliente is ClienteCorporativo)
-                {
-                    Console.WriteLine($"Total: Q.{CalcularTotal(buscar)} (15% de descuento aplicado).");
-                }
-
-            }
-            Console.ReadKey();
+            catch (Exception ex) { Console.WriteLine("Debe ingresar un número. " + ex.Message); Console.ReadKey(); }
         }
     }
 }

@@ -7,98 +7,106 @@ List<Vehiculo> listaVehiculos= new List<Vehiculo>();
 List <Pedido> listaPedidos= new List<Pedido>();
 while (menu)
 {
-    MostrarMenu();
-    opcion = Convert.ToInt32(Console.ReadLine());
-    switch (opcion)
+    try
     {
-        case 1:
-            {
-                bool menuClientes = true;
-                int opcionClientes;
-                while (menuClientes )
+        MostrarMenu();
+        opcion = Convert.ToInt32(Console.ReadLine());
+        switch (opcion)
+        {
+            case 1:
+                {
+                    bool menuClientes = true;
+                    int opcionClientes;
+                    while (menuClientes)
+                    {
+                        try
+                        {
+                            Console.Clear();
+                            Console.WriteLine("¿Qué tipo de cliente desea registrar?");
+                            Console.WriteLine("1. Cliente Regular.");
+                            Console.WriteLine("2. Cliente VIP.");
+                            Console.WriteLine("3. Cliente Corporativo.");
+                            Console.WriteLine("4. Salir.");
+                            opcionClientes = Convert.ToInt32(Console.ReadLine());
+                            switch (opcionClientes)
+                            {
+                                case 1:
+                                    {
+                                        ClienteRegular.RegistrarClienteRegular(listaClientes);
+                                        break;
+                                    }
+                                case 2:
+                                    {
+                                        ClienteVIP.RegistrarClienteVIP(listaClientes);
+                                        break;
+                                    }
+                                case 3:
+                                    {
+                                        ClienteCorporativo.RegistrarClienteCorporativo(listaClientes);
+                                        break;
+                                    }
+                                case 4:
+                                    {
+                                        Console.Clear();
+                                        menuClientes = false;
+                                        break;
+                                    }
+                            }
+                        }
+                        catch (Exception ex) { Console.WriteLine("Ingrese un número del 1 al 4." +ex.Message); Console.ReadKey(); }
+                    }
+                    break;
+                }
+            case 2:
+                {
+                    Vehiculo.Registrar(listaVehiculos, listaClientes);
+                    break;
+                }
+            case 3:
+                {
+                    Pedido.RegistrarPedido(listaPedidos, listaClientes);
+                    break;
+                }
+            case 4:
+                {
+                    Cliente.MostrarDetalles(listaClientes);
+                    break;
+                }
+            case 5:
+                {
+                    Vehiculo.MostrarDetalles(listaVehiculos);
+                    break;
+                }
+            case 6:
+                {
+                    Pedido.MostrarDetalles(listaPedidos);
+                    break;
+                }
+            case 7:
+                {
+                    Cliente.BuscarCliente(listaClientes);
+                    break;
+                }
+            case 8:
+                {
+                    Vehiculo.BuscarVehiculos(listaVehiculos);
+                    break;
+                }
+            case 9:
+                {
+                    Pedido.BuscarPedido(listaPedidos, listaClientes);
+                    break;
+                }
+            case 0:
                 {
                     Console.Clear();
-                    Console.WriteLine("¿Qué tipo de cliente desea registrar?");
-                    Console.WriteLine("1. Cliente Regular.");
-                    Console.WriteLine("2. Cliente VIP.");
-                    Console.WriteLine("3. Cliente Corporativo.");
-                    Console.WriteLine("4. Salir.");
-                    opcionClientes =Convert.ToInt32(Console.ReadLine());
-                    switch (opcionClientes)
-                    {
-                        case 1:
-                            {
-                                ClienteRegular.RegistrarClienteRegular(listaClientes);
-                                break;
-                            }
-                        case 2:
-                            {
-                                ClienteVIP.RegistrarClienteVIP(listaClientes);
-                                break;
-                            }
-                        case 3:
-                            {
-                                ClienteCorporativo.RegistrarClienteCorporativo(listaClientes);
-                                break;
-                            }
-                        case 4:
-                            {
-                                Console.Clear();
-                                menuClientes=false;
-                                break;
-                            }
-                    }
+                    menu = false;
+                    break;
                 }
-                break;
-            }
-        case 2:
-            {
-                Vehiculo.Registrar(listaVehiculos, listaClientes);
-                break;
-            }
-        case 3:
-            {
-                Pedido.RegistrarPedido(listaPedidos, listaClientes);
-                break;
-            }
-        case 4:
-            {
-                Cliente.MostrarDetalles(listaClientes);
-                break;
-            }
-        case 5:
-            {
-                Vehiculo.MostrarDetalles(listaVehiculos);
-                break;
-            }
-        case 6:
-            {
-                Pedido.MostrarDetalles(listaPedidos);
-                break;
-            }
-        case 7:
-            {
-                Cliente.BuscarCliente(listaClientes);
-                break;
-            }
-        case 8:
-            {
-                Vehiculo.BuscarVehiculos(listaVehiculos);
-                break;
-            }
-        case 9:
-            {
-                Pedido.BuscarPedido(listaPedidos, listaClientes);
-                break;
-            }
-        case 0:
-            {
-                Console.Clear();
-                menu= false;
-                break;
-            }
 
+        }
     }
+    catch (Exception ex) { Console.WriteLine($"Ingrese un número del 0 al 9. "+ex.Message); Console.ReadKey(); }
 }
 static void MostrarMenu()
 {
