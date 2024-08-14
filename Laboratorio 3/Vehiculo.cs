@@ -54,13 +54,21 @@ namespace Laboratorio_3
             {
                 if (vehiculo is  VehiculoPersonal vehiculoPersonal)
                 {
-                    Console.WriteLine("VEHÍCULO PERSONAL");
-                    Console.WriteLine($"Matrícula: {vehiculoPersonal.Matricula}. Modelo: {vehiculoPersonal.Modelo}. Combustible: {vehiculoPersonal.Combustible}.");
+                    if (vehiculo.Cliente is ClienteVIP)
+                    {
+                        Console.WriteLine("VEHÍCULO PERSONAL");
+                        Console.WriteLine($"Cliente (VIP): {vehiculoPersonal.Cliente.Nombre}. Matrícula: {vehiculoPersonal.Matricula}. Modelo: {vehiculoPersonal.Modelo}. Combustible: {vehiculoPersonal.Combustible}.");
+                    }
+                    else if (vehiculo.Cliente is ClienteRegular)
+                    {
+                        Console.WriteLine("VEHÍCULO PERSONAL");
+                        Console.WriteLine($"Cliente (Regular): {vehiculoPersonal.Cliente.Nombre}. Matrícula: {vehiculoPersonal.Matricula}. Modelo: {vehiculoPersonal.Modelo}. Combustible: {vehiculoPersonal.Combustible}.");
+                    }
                 }
                 else if (vehiculo is VehiculoCorporativo vehiculoCorporativo)
                 {
                     Console.WriteLine("VEHÍCULO CORPORATIVO");
-                    Console.WriteLine($"Matrícula: {vehiculoCorporativo.Matricula}. Modelo: {vehiculoCorporativo.Modelo}. Combustible: {vehiculoCorporativo.Combustible}.");
+                    Console.WriteLine($"Cliente (Corporativo): {vehiculoCorporativo.Cliente.Nombre}. Matrícula: {vehiculoCorporativo.Matricula}. Modelo: {vehiculoCorporativo.Modelo}. Combustible: {vehiculoCorporativo.Combustible}.");
                 }
             }
             Console.ReadKey();
@@ -79,13 +87,21 @@ namespace Laboratorio_3
             {
                 if (buscar is VehiculoPersonal vehiculoPersonal)
                 {
-                    Console.WriteLine("VEHÍCULO PERSONAL");
-                    Console.WriteLine($"Matrículo: {vehiculoPersonal.Matricula}. Modelo: {vehiculoPersonal.Modelo}. Combustible: {vehiculoPersonal.Combustible}.");
+                    if (buscar.Cliente is ClienteVIP)
+                    {
+                        Console.WriteLine("VEHÍCULO PERSONAL");
+                        Console.WriteLine($"Cliente (VIP): {vehiculoPersonal.Cliente.Nombre}. Matrícula: {vehiculoPersonal.Matricula}. Modelo: {vehiculoPersonal.Modelo}. Combustible: {vehiculoPersonal.Combustible}.");
+                    }
+                    else if (buscar.Cliente is ClienteRegular)
+                    {
+                        Console.WriteLine("VEHÍCULO PERSONAL");
+                        Console.WriteLine($"Cliente (Regular): {vehiculoPersonal.Cliente.Nombre}. Matrícula: {vehiculoPersonal.Matricula}. Modelo: {vehiculoPersonal.Modelo}. Combustible: {vehiculoPersonal.Combustible}.");
+                    }
                 }
                 else if  (buscar is VehiculoCorporativo vehiculoCorporativo)
                 {
                     Console.WriteLine("VEHÍCULO CORPORATIVO");
-                    Console.WriteLine($"Matrículo: {vehiculoCorporativo.Matricula}. Modelo: {vehiculoCorporativo.Modelo}. Combustible: {vehiculoCorporativo.Combustible}.");
+                    Console.WriteLine($"Cliente (Corporativo): {vehiculoCorporativo.Cliente.Nombre}. Matrícula: {vehiculoCorporativo.Matricula}. Modelo: {vehiculoCorporativo.Modelo}. Combustible: {vehiculoCorporativo.Combustible}.");
                 }
             }
             Console.ReadKey();

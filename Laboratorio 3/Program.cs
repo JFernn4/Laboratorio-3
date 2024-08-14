@@ -53,7 +53,7 @@ while (menu)
             }
         case 2:
             {
-                Vehiculo.Registrar();
+                Vehiculo.Registrar(listaVehiculos, listaClientes);
                 break;
             }
         case 3:

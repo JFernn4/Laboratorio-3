@@ -23,12 +23,6 @@ namespace Laboratorio_3
         public static void RegistrarPedido(List<Pedido> listaPedidos, List<Cliente> listaClientes)
         {
             Console.Clear();
-            Console.WriteLine("Ingrese el número de pedido:");
-            int numero = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Ingrese la fecha del pedido:");
-            string fecha = Console.ReadLine();
-
             Console.WriteLine("Ingrese el nombre del cliente:");
             string nombreCliente = Console.ReadLine();
 
@@ -41,6 +35,11 @@ namespace Laboratorio_3
             }
             else
             {
+                Console.WriteLine("Ingrese el número de pedido:");
+                int numero = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Ingrese la fecha del pedido:");
+                string fecha = Console.ReadLine();
                 Pedido pedido = new Pedido(numero, fecha, cliente);
                 Console.WriteLine("¿Cuántos productos desea agregar a este pedido?");
                 int cantidadProductos = Convert.ToInt32(Console.ReadLine());

@@ -13,7 +13,6 @@ namespace Laboratorio_3
         }
         public static void RegistrarVehiculoPersonal(List<Vehiculo> listaVehiculos, Cliente cliente)
         {
-            Console.Clear();
             Console.WriteLine("Ingrese la matrícula del vehículo.");
             string matricula = Console.ReadLine();
             Console.WriteLine("Ingrese el modelo del vehículo.");
